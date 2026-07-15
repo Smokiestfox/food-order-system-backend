@@ -23,8 +23,8 @@ Copy `.env.example` to `.env` and configure your database credentials.
 PORT=3000
 DB_HOST=localhost
 DB_PORT=5432
-DB_USER=postgres
-DB_PASS=postgres
+DB_USERNAME=your_db_user
+DB_PASSWORD=your_db_password
 DB_NAME=order_system
 JWT_SECRET=your_jwt_secret_key
 JWT_EXPIRATION=7d
