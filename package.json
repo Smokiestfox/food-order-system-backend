@@ -5,8 +5,10 @@
   "author": "",
   "private": true,
   "license": "MIT",
+  "engines": { "node": ">=22" },
   "scripts": {
     "build": "nest build",
+    "test": "npm run build && node --test --test-concurrency=1 test/api.test.cjs",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
