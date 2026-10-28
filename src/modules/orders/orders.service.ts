@@ -136,6 +136,16 @@ export class OrdersService {
     return this.findOne(id);
   }
 
+  async findForUser(id: string, userId: string, userRole: UserRole): Promise<Order> {
+    const order = await this.findOne(id);
+    const ownsOrder = userRole === UserRole.CUSTOMER && order.customerId === userId;
+    const ownsRestaurant = userRole === UserRole.RESTAURANT_OWNER && order.restaurant.ownerId === userId;
+    if (userRole !== UserRole.ADMIN && !ownsOrder && !ownsRestaurant) {
+      throw new ForbiddenException('Not your order');
+    }
+    return order;
+  }
+
   async cancel(id: string, customerId: string): Promise<Order> {
     const order = await this.findOne(id);
 

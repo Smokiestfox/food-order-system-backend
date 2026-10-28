@@ -36,8 +36,8 @@ export class OrdersController {
 
   @Get(':id')
   @ApiOperation({ summary: 'Get order detail' })
-  findOne(@Param('id', ParseUUIDPipe) id: string) {
-    return this.ordersService.findOne(id);
+  findOne(@Param('id', ParseUUIDPipe) id: string, @CurrentUser() user: any) {
+    return this.ordersService.findForUser(id, user.id, user.role);
   }
 
   @Patch(':id/status')
