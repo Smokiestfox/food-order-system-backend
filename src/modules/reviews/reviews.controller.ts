@@ -8,7 +8,7 @@ import { UserRole } from '../users/entities/user.entity';
 import { Public } from '../../common/decorators/public.decorator';
 
 @ApiTags('Reviews')
-@ApiBearerAuth()
+@ApiBearerAuth('JWT-auth')
 @Controller()
 export class ReviewsController {
   constructor(private readonly reviewsService: ReviewsService) {}

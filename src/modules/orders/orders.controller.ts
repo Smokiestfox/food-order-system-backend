@@ -16,7 +16,7 @@ import { Roles } from '../../common/decorators/roles.decorator';
 import { UserRole } from '../users/entities/user.entity';
 
 @ApiTags('Orders')
-@ApiBearerAuth()
+@ApiBearerAuth('JWT-auth')
 @Controller('orders')
 export class OrdersController {
   constructor(private readonly ordersService: OrdersService) {}
